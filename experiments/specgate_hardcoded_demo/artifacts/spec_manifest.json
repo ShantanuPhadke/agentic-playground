@@ -1,0 +1,53 @@
+{
+  "specgate_version": "0.1",
+  "generated_at": "2026-01-24T07:53:26.144460Z",
+  "input_prompt": "Add a payment button to checkout",
+  "routing": {
+    "domain": "payments",
+    "chosen_service": "Pay-Old",
+    "service_version": "v1"
+  },
+  "constraints": {
+    "auth": "ApiKey_Legacy",
+    "pci": "handled",
+    "auditLogging": false,
+    "ui": {
+      "design_tokens_file": "design-tokens.json",
+      "buttonsUseTokens": true,
+      "noInlineHexColors": true
+    }
+  },
+  "policy_checks": [
+    {
+      "id": "SEC-PII-001",
+      "rule": "No PII stored in logs",
+      "status": "enforced"
+    },
+    {
+      "id": "SEC-PAY-002",
+      "rule": "Payments must use Pay-Secure unless explicitly approved",
+      "status": "enforced"
+    }
+  ],
+  "files": [
+    {
+      "path": "app/Checkout.tsx",
+      "change_type": "modify",
+      "intent": "Add a payment button that uses design tokens and routes through chosen payments service."
+    },
+    {
+      "path": "app/paymentsClient.ts",
+      "change_type": "create",
+      "intent": "Client wrapper for Pay-Old with required auth and audit logging hooks."
+    }
+  ],
+  "acceptance_criteria": [
+    "Payment button uses design tokens (no inline hex colors).",
+    "Payments flow uses Pay-Old (v1).",
+    "No PII stored in logs.",
+    "All changes limited to files listed in manifest."
+  ],
+  "handoff_to_coding_agent": {
+    "instruction": "Generate or modify ONLY the files listed. Follow constraints and acceptance criteria exactly."
+  }
+}

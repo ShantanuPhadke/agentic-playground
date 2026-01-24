@@ -1,0 +1,8 @@
+{
+  "button": {
+    "primaryBg": "var(--color-primary)",
+    "primaryText": "var(--color-on-primary)",
+    "radius": "12px",
+    "padding": "10px 14px"
+  }
+}

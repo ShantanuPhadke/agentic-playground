@@ -1,0 +1,38 @@
+{
+  "services": [
+    {
+      "name": "Pay-Old",
+      "type": "payments",
+      "version": "v1",
+      "status": "legacy",
+      "constraints": {
+        "requiredAuth": "ApiKey_Legacy",
+        "pci": "handled",
+        "allowedRegions": ["US"]
+      }
+    },
+    {
+      "name": "Pay-Secure",
+      "type": "payments",
+      "version": "v2",
+      "status": "preferred",
+      "constraints": {
+        "requiredAuth": "OAuth2_ServiceAccount",
+        "pci": "tokenized_only",
+        "auditLogging": true,
+        "allowedRegions": ["US", "CA", "EU"]
+      }
+    }
+  ],
+  "ui": {
+    "designTokensFile": "design-tokens.json",
+    "constraints": {
+      "buttonsUseTokens": true,
+      "noInlineHexColors": true
+    }
+  },
+  "policies": [
+    { "id": "SEC-PII-001", "rule": "No PII stored in logs" },
+    { "id": "SEC-PAY-002", "rule": "Payments must use Pay-Secure unless explicitly approved" }
+  ]
+}
