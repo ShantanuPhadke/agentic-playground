@@ -1,0 +1,13 @@
+{
+  "goals": [
+    "Build a payment-processing API that can safely ingest Stripe events.",
+    "Keep architectural decisions visible across workflow steps.",
+    "Validate output against stated goals before committing code."
+  ],
+  "constraints": [
+    "Prefer Node.js async/await routines and RESTful services.",
+    "Document decisions so future steps can recall context."
+  ],
+  "architecture_summary": "API Gateway routes to Payment Service, Webhook Handler, and Notification Service.",
+  "coding_conventions": "CamelCase for functions, keep helpers under 30 lines."
+}

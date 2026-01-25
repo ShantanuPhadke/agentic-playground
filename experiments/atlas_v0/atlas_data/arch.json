@@ -1,0 +1,31 @@
+{
+  "nodes": [
+    {
+      "name": "API Gateway",
+      "type": "service",
+      "description": "Routes HTTP requests and enforces auth."
+    },
+    {
+      "name": "Payment Service",
+      "type": "service",
+      "description": "Handles Stripe charges and retries."
+    },
+    {
+      "name": "Webhook Handler",
+      "type": "service",
+      "description": "Processes Stripe webhook payloads."
+    }
+  ],
+  "edges": [
+    {
+      "source": "API Gateway",
+      "target": "Payment Service",
+      "label": "routes to"
+    },
+    {
+      "source": "Payment Service",
+      "target": "Webhook Handler",
+      "label": "notifies"
+    }
+  ]
+}

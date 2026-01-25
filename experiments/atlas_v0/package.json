@@ -1,0 +1,41 @@
+{
+  "name": "atlas-vscode",
+  "displayName": "Atlas Demo",
+  "description": "Atlas demo extension to run the local Python workflow and visualize artifacts.",
+  "version": "0.0.1",
+  "publisher": "atlas-demo",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:atlas.initProject",
+    "onCommand:atlas.runPrompt"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "atlas.initProject",
+        "title": "Atlas: Init Project"
+      },
+      {
+        "command": "atlas.runPrompt",
+        "title": "Atlas: Run Prompt"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "echo \"No lint configured\""
+  },
+  "devDependencies": {
+    "@types/node": "18.x",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.4.0"
+  }
+}
